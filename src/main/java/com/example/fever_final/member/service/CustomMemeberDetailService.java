@@ -26,9 +26,13 @@ public class CustomMemeberDetailService implements UserDetailsService {
         return outhRepository.findByPhoneNumber(phoneNumber);
     }
 
-    public int signUpUser(Member user) {
-        if (outhRepository.findByPhoneNumber(user.getPhoneNumber()) == null) {
-            outhRepository.save(user);
+    public UserDetails findByEmail(String phoneNumber) {
+        return outhRepository.findByPhoneNumber(phoneNumber);
+    }
+
+    public int signUpUser(Member member) {
+        if (outhRepository.findByPhoneNumber(member.getPhoneNumber()) == null) {
+            outhRepository.save(member);
             return 1; // 회원가입 성공시
         } else
             return -1; // 회원가입 실패시

@@ -6,13 +6,24 @@ import org.springframework.stereotype.Component;
 public class Status {
 
     /*
-     * 200 success
-     * 3XX input error
-     * 4XX server error
-     * 5XX database error
+     * 2000 success
+     * 3XXX input error
+     * 4XXX server error
+     * 5XXX database error
      */
 
-    public int SUCCESS = 200;
+    public final int SUCCESS = 2000;
+
+    public int EXISTED_NICKNAME = 3001;
+
+    public final int EXPIRED_TOKEN = 4001;
+
+
+
+
+
+
+
 
 
 }

@@ -8,6 +8,7 @@ public class ResponseMessage {
      * Set same variable name class Status's variable name
      */
 
-    public String SUCCESS = "성공";
-
+    public final String SUCCESS = "성공";
+    public final String EXPIRED_TOKEN = "REFRESH TOKEN이 만료되었습니다. 새롭게 로그인 해주세요.";
+    public final String EXISTED_NICKNAME = "이미 닉네임이 존재합니다. 다른 닉네임을 작성해 주세요.";
 }
