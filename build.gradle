@@ -1,0 +1,57 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.1'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'org.springframework.experimental.aot' version '0.12.0'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    maven { url 'https://repo.spring.io/release' }
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation group: 'com.h2database', name: 'h2', version: '1.4.197'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'mysql:mysql-connector-java'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    implementation "javax.xml.bind:jaxb-api"
+    implementation 'javax.mail:javax.mail-api:1.6.2'
+
+    // spring cloud starter aws
+//    implementation ('org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE')
+    // https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+//    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+
+    // https://www.youtube.ㄹcom/watch?v=BmfrvbUH-YQ
+//    implementation 'io.springfox:springfox-swagger2:3.0.0'
+    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+
+    // ModelMapper
+    implementation('org.modelmapper:modelmapper:3.1.0')
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+//tasks.named('bootBuildImage') {
+//    builder = 'paketobuildpacks/builder:tiny'
+//    environment = ['BP_NATIVE_IMAGE': 'true']
+//}
