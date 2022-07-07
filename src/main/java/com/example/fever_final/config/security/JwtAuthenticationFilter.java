@@ -2,6 +2,7 @@ package com.example.fever_final.config.security;
 
 
 import com.example.fever_final.config.security.JwtTokenProvider;
+import com.example.fever_final.member.service.CustomMemeberDetailService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
@@ -19,11 +20,12 @@ import java.util.HashMap;
 public class JwtAuthenticationFilter extends GenericFilterBean {
 
     private JwtTokenProvider jwtTokenProvider;
-//    private CustomUserDetailService customUserDetailService;
+    private CustomMemeberDetailService customUserDetailService;
 
     // Jwt Provier 주입
     public JwtAuthenticationFilter(JwtTokenProvider jwtTokenProvider) {
         this.jwtTokenProvider = jwtTokenProvider;
+
 
     }
 

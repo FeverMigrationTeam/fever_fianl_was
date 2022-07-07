@@ -2,14 +2,16 @@ package com.example.fever_final.config.security;
 
 // import 생략
 
-import com.example.fever_final.config.CommonEncoder;
+import com.example.fever_final.common.CommonEncoder;
 import com.example.fever_final.member.service.CustomMemeberDetailService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -22,6 +24,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 /* 클라에서 api 호출을 하면 Controller에 도달하기 전에 filter를 거침
 * 이러한 filter 설정을 아래에 한거임. : Token 기반 인증 절차 구현 */
 @Configuration
+@Slf4j
 @RequiredArgsConstructor
 @EnableWebSecurity // 시큐리티 가능하게
 @EnableGlobalMethodSecurity( // 아래와 같은 어노테이션들을 컨트롤러에서 사용할 수 있게 해줌
