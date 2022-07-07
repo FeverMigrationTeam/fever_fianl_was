@@ -19,6 +19,12 @@ public class Status {
     public final int EXPIRED_TOKEN = 4001;
 
 
+    /* 4100 ~ : 로그인/회원가입 관련 error */
+    public final int LOGIN_INVALID_ID = 4100;
+    public final int LOGIN_INVALID_PASSWORD = 4101;
+
+
+
 
 
 

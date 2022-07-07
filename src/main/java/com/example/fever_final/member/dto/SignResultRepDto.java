@@ -12,8 +12,7 @@ import lombok.Setter;
 @Setter
 public class SignResultRepDto {
 
-    private String result;
-    private String message;
+
     private String accessToken;
     private String refreshToken;
 
