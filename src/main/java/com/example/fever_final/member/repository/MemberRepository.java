@@ -8,7 +8,7 @@ import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @Repository
-public interface OuthRepository extends JpaRepository<Member,Long> {
+public interface MemberRepository extends JpaRepository<Member,Long> {
 
     Member findByPhoneNumber(String phoneNumber);
 

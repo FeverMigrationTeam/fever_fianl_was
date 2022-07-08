@@ -1,4 +1,4 @@
-package com.example.fever_final.member.dto;
+package com.example.fever_final.member.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

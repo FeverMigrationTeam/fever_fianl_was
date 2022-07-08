@@ -1,12 +1,16 @@
-package com.example.fever_final.member.dto;
+package com.example.fever_final.member.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class SignInReqDto {
+public class UserJoinDto {
 
+    private String name;
     private String phoneNumber;
     private String password;
+
+
+
 }

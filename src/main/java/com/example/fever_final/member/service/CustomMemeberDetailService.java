@@ -1,7 +1,7 @@
 package com.example.fever_final.member.service;
 
 import com.example.fever_final.member.entity.Member;
-import com.example.fever_final.member.repository.OuthRepository;
+import com.example.fever_final.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,7 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CustomMemeberDetailService implements UserDetailsService {
 
-    private final OuthRepository outhRepository;
+    private final MemberRepository outhRepository;
 
     @Override
     public UserDetails loadUserByUsername(String phoneNumber) throws UsernameNotFoundException {

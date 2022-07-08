@@ -1,4 +1,4 @@
-package com.example.fever_final.member.dto;
+package com.example.fever_final.member.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,8 +13,8 @@ import lombok.Setter;
 public class SignResultRepDto {
 
 
-    private String accessToken;
-    private String refreshToken;
+    private String accesstoken;
+    private String refreshtoken;
 
 
 }

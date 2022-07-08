@@ -1,7 +1,7 @@
 package com.example.fever_final.member.entity;
 
 
-import com.example.fever_final.member.dto.UserJoinDto;
+import com.example.fever_final.member.dto.request.UserJoinDto;
 import com.example.fever_final.member.etc.MemberStatus;
 import com.example.fever_final.common.SocialType;
 import com.example.fever_final.common.Timestamped;

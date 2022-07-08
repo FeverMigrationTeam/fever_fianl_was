@@ -7,12 +7,12 @@ import com.example.fever_final.common.response.NoDataResponse;
 import com.example.fever_final.common.response.ResponseMessage;
 import com.example.fever_final.common.response.Status;
 import com.example.fever_final.config.security.JwtTokenProvider;
-import com.example.fever_final.member.dto.RefreshTokenReqDto;
-import com.example.fever_final.member.dto.SignInReqDto;
-import com.example.fever_final.member.dto.SignResultRepDto;
-import com.example.fever_final.member.dto.UserJoinDto;
+import com.example.fever_final.member.dto.request.RefreshTokenReqDto;
+import com.example.fever_final.member.dto.request.SignInReqDto;
+import com.example.fever_final.member.dto.response.SignResultRepDto;
+import com.example.fever_final.member.dto.request.UserJoinDto;
 import com.example.fever_final.member.entity.Member;
-import com.example.fever_final.member.repository.OuthRepository;
+import com.example.fever_final.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,10 +24,10 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class SignService {
+public class MemberService {
 
     private final CustomMemeberDetailService customUserDetailService;
-    private final OuthRepository outhRepository;
+    private final MemberRepository memberRepository;
     private final Status status;
     private final ResponseMessage message;
     private final CommonEncoder passwordEncoder = new CommonEncoder();
@@ -35,8 +35,8 @@ public class SignService {
 
 
     /* U1 : 이름 중복여부 확인(실명) */
-    public ResponseEntity validname(String nickname){
-        Optional<Member> isExist = outhRepository.findByName(nickname);
+    public ResponseEntity validName(String nickname){
+        Optional<Member> isExist = memberRepository.findByName(nickname);
 
         if(isExist.isPresent())
             return new ResponseEntity(NoDataResponse.response(status.EXISTED_NICKNAME
@@ -55,17 +55,30 @@ public class SignService {
 
         user.setRoles("USER"); // 역할(권한) 부여
         user.setPassword(passwordEncoder.encode(userJoinDto.getPassword())); // 패스워드 암호화
+        // 전화번호 길이
+        if(userJoinDto.getPhoneNumber().length() !=11){
+            return new ResponseEntity(NoDataResponse.response(status.SIGN_UP_INVALID_ID, message.SIGN_UP_INVALID_ID
+                    ), HttpStatus.OK);
+
+        }
+
+        // 패스워드 길이
+        if(userJoinDto.getPassword().length() < 3){
+            return new ResponseEntity(NoDataResponse.response(status.SIGN_UP_INVALID_PASSWORD, message.SIGN_UP_INVALID_PASSWORD
+            ), HttpStatus.OK);
+        }
 
         int result = customUserDetailService.signUpUser(user);
         if (result == 1) {
             return new ResponseEntity(NoDataResponse.response(status.SUCCESS, message.SUCCESS + " : 회원가입"), HttpStatus.OK);
 
-        } else if (result == -1) {
-            return new ResponseEntity(NoDataResponse.response(status.LOGIN_INVALID_ID, message.LOGIN_INVALID_ID), HttpStatus.OK);
+        } else if (result == -1) { // 이미 존재하는 전화번호
 
-        } else {
+            return new ResponseEntity(NoDataResponse.response(status.SIGN_UP_ALREADY_EXISTED_ID, message.SIGN_UP_ALREADY_EXISTED_ID), HttpStatus.OK);
 
-            return new ResponseEntity(NoDataResponse.response(status.LOGIN_INVALID_ID, message.LOGIN_INVALID_ID), HttpStatus.OK);
+        } else { // 알수없는 예외상황
+
+            return new ResponseEntity(NoDataResponse.response(status.SIGN_UP_INTERNAL_SERVER_ERROR, message.SIGN_UP_INTERNAL_SERVER_ERROR), HttpStatus.OK);
         }
     }
 
@@ -82,9 +95,9 @@ public class SignService {
 //                List<String> roleList = Arrays.asList(user.getRoles().split(","));
                 String roles = user.getRoles();
 
-                signResultRepDto.setAccessToken(jwtTokenProvider.createToken(user.getPhoneNumber(), roles)); // access token 만들기
+                signResultRepDto.setAccesstoken(jwtTokenProvider.createToken(user.getPhoneNumber(), roles)); // access token 만들기
                 String tmpRefreshToken = jwtTokenProvider.createRefreshToken(user.getPhoneNumber());
-                signResultRepDto.setRefreshToken(tmpRefreshToken); // refresh token 만들기
+                signResultRepDto.setRefreshtoken(tmpRefreshToken); // refresh token 만들기
 
                 // 새롭게 DB에 refresh token 변경
                 user.setRefreshToken(tmpRefreshToken);
