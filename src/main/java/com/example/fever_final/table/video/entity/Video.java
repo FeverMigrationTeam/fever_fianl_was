@@ -4,6 +4,7 @@ package com.example.fever_final.table.video.entity;
 import com.example.fever_final.common.Timestamped;
 import com.example.fever_final.table.stadium.Stadium;
 import com.example.fever_final.table.member.entity.Member;
+import com.example.fever_final.table.video.dto.UploadReqDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -30,5 +31,13 @@ public class Video extends Timestamped {
     @JoinColumn(name = "stadium_id")
     private Stadium stadium;
 
+
+    public static Video buildUpload( String url,Member member, Stadium stadium){
+        return Video.builder()
+                .member(member)
+                .stadium(stadium)
+                .videoUrl(url)
+                .build();
+    }
 
 }

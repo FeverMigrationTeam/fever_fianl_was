@@ -5,7 +5,7 @@ import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
-import com.example.fever_final.util.s3.compent.S3VideoComponent;
+import com.example.fever_final.util.s3.component.S3VideoComponent;
 import com.example.fever_final.util.IUpload;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -19,7 +19,8 @@ public class AwsS3UploadImpl implements IUpload {
     private final AmazonS3 amazonS3;
     private final S3VideoComponent component; // aws s3 bucket과 연결 ? 해주는 컴포넌트
 
-    public final static String CLOUD_FRONT_DOMAIN_NAME = "https://d2mlge002kx5r2.cloudfront.net";
+    // cloudFront 배포도메인
+    public final static String CLOUD_FRONT_DOMAIN_NAME = "https://d33ipfyyudd4bi.cloudfront.net";
 
     @Override
     public String uploadFile(InputStream inputStream, ObjectMetadata objectMetadata, String fileName) {
