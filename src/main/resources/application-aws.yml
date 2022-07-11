@@ -1,0 +1,19 @@
+cloud:
+  aws: # 동영상관련
+    s3:
+      bucket: fever-s3-bucket
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+    credentials:
+      instanceProfile: true
+  aws-thumbnail:  # thumnb관련
+    s3:
+      bucket: fever-s3-thumbnail-bucket
+    region:
+      static: ap-northeast-2
+      stack:
+        auto: false
+      credentials:
+        instanceProfile: true

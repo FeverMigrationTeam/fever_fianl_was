@@ -1,8 +1,7 @@
 package com.example.fever_final.config.security;
 
 
-import com.example.fever_final.config.security.JwtTokenProvider;
-import com.example.fever_final.member.service.CustomMemeberDetailService;
+import com.example.fever_final.table.member.service.CustomMemeberDetailService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
