@@ -1,7 +1,7 @@
 package com.example.fever_final.config.security;
 
 
-import com.example.fever_final.member.service.CustomMemeberDetailService;
+import com.example.fever_final.table.member.service.CustomMemeberDetailService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 //https://daddyprogrammer.org/post/636/springboot2-springsecurity-authentication-authorization/
 @RequiredArgsConstructor
