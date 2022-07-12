@@ -1,4 +1,4 @@
-package com.example.fever_final.table.stadium;
+package com.example.fever_final.table.stadium.entity;
 
 import lombok.Getter;
 import lombok.Setter;

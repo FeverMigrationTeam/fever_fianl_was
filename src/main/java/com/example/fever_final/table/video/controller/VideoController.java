@@ -1,6 +1,7 @@
 package com.example.fever_final.table.video.controller;
 
 
+import com.example.fever_final.table.video.dto.MultipartDto;
 import com.example.fever_final.table.video.dto.UploadReqDto;
 import com.example.fever_final.table.video.service.VideoService;
 import lombok.Getter;
@@ -19,13 +20,16 @@ public class VideoController {
 
     private final VideoService videoService;
 
-    /* 비디오 업로드 */
+    /* V1 : 비디오 업로드 */
     @PostMapping("/upload")
-    public ResponseEntity uploadVideo(@RequestPart MultipartFile video,
-                                      @RequestPart UploadReqDto uploadReqDto) {
-        return videoService.uploadVideo(video,uploadReqDto);
+    public ResponseEntity uploadVideo(@ModelAttribute MultipartDto dto) {
+        return videoService.uploadVideo(dto);
     }
 
-
+    /* V2 : s3에서 영상 List 내려주기 */
+    @GetMapping("/lise/{userId}")
+    public ResponseEntity getVideoList(@PathVariable Long userId){
+        videoService.getVideoList(userId);
+    }
 
 }

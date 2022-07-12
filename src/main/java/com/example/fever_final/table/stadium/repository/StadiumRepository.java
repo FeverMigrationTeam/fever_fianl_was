@@ -1,7 +1,7 @@
 package com.example.fever_final.table.stadium.repository;
 
 
-import com.example.fever_final.table.stadium.Stadium;
+import com.example.fever_final.table.stadium.entity.Stadium;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

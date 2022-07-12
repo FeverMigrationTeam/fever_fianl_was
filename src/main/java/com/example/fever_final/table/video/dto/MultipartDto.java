@@ -15,6 +15,7 @@ public class MultipartDto {
 
     private MultipartFile video;
     private Long userId;
+    private Long regalaId;
     private String stadiumName;
 
 }

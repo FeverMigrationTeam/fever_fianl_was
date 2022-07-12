@@ -40,4 +40,7 @@ public class Status {
     // 유효성 검사
     public final int STADIUM_INVALID_NAME = 5001;
     public final int VIDEO_NULLPOINT_EXCEPTION = 5002;
+    public final int REGALA_INVALID_ID = 5003;
+    public final int REGALA_INVALID_STATUS = 5004;
+
 }

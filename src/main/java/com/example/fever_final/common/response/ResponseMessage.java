@@ -13,6 +13,8 @@ public class ResponseMessage {
     // 유효성 검사
     public String MEMBER_INVALID_ID = "존재하지 않는 유저입니다.";
     public String STADIUM_INVALID_NAME = "존재하지 않는 경기장입니다.";
+    public String REGALA_INVALID_ID = "존재하지 않는 리갈라 id입니다.";
+    public String REGALA_INVALID_STATUS = "존재하지 않는 리갈라 상태코드입니다. int : 1(사용가능) 혹은 0(사용불가)로 입력해주세요.";
 
     // 로그인 회원가입 관련
     public String EXPIRED_TOKEN = "REFRESH TOKEN이 만료되었습니다. 새롭게 로그인 해주세요.";
