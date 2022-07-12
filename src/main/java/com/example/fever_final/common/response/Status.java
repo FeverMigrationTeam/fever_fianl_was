@@ -35,6 +35,14 @@ public class Status {
     public final int SIGN_UP_INTERNAL_SERVER_ERROR = 4104;
     public final int MEMBER_INVALID_ID = 4105;
 
+    /* 4200 ~ : video 관련
+    *
+    * */
+
+    public final int MEMBER_NO_VIDEOS = 4200;
+    public final int VIDEO_INVALID_ID = 4201;
+
+
     /**
      * */
     // 유효성 검사
@@ -42,5 +50,7 @@ public class Status {
     public final int VIDEO_NULLPOINT_EXCEPTION = 5002;
     public final int REGALA_INVALID_ID = 5003;
     public final int REGALA_INVALID_STATUS = 5004;
+
+
 
 }
