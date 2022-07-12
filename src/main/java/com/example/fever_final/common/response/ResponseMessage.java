@@ -24,6 +24,8 @@ public class ResponseMessage {
     public String SIGN_UP_INTERNAL_SERVER_ERROR = "알수 없는 예외입니다.";
     public String SIGN_UP_INVALID_PASSWORD = "비밀번호는 3자이상 입력해주세요.";
 
+    // video 관련
+    public String VIDEO_NULLPOINT_EXCEPTION = "비디오가 없습니다.비디오를 첨부해주세요.";
 
 
 

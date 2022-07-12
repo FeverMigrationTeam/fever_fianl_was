@@ -20,7 +20,7 @@ public class AwsS3UploadImpl implements IUpload {
     private final S3VideoComponent component; // aws s3 bucket과 연결 ? 해주는 컴포넌트
 
     // cloudFront 배포도메인
-    public final static String CLOUD_FRONT_DOMAIN_NAME = "https://d33ipfyyudd4bi.cloudfront.net";
+    public final static String CLOUD_FRONT_DOMAIN_NAME = "https://ddetl0ibd0ix7.cloudfront.net/";
 
     @Override
     public String uploadFile(InputStream inputStream, ObjectMetadata objectMetadata, String fileName) {

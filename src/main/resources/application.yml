@@ -75,7 +75,7 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: create
+      ddl-auto: update #create
       use-new-id-generator-mappings: true
     show-sql: true
     properties:
