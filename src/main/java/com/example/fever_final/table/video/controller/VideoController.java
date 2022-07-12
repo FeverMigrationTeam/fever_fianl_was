@@ -27,9 +27,15 @@ public class VideoController {
     }
 
     /* V2 : s3에서 영상 List 내려주기 */
-    @GetMapping("/lise/{userId}")
-    public ResponseEntity getVideoList(@PathVariable Long userId){
-        videoService.getVideoList(userId);
+    @GetMapping("/list/{userId}")
+    public ResponseEntity getVideoList(@PathVariable Long userId) {
+        return videoService.getVideoList(userId);
+    }
+
+    /* V3 : s3에서 영상 URl 내려주기 */
+    @GetMapping("/{videoId}")
+    public ResponseEntity getVideo(@PathVariable Long videoId){
+        return videoService.getVideo(videoId);
     }
 
 }
