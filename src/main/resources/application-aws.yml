@@ -13,7 +13,7 @@ cloud:
       bucket: fever-s3-thumbnail-bucket
     region:
       static: ap-northeast-2
-      stack:
-        auto: false
-      credentials:
-        instanceProfile: true
+    stack:
+      auto: false
+    credentials:
+      instanceProfile: true

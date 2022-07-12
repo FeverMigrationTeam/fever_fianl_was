@@ -38,6 +38,14 @@ public class VideoService {
     /* 비디오 업로드 */
     @Transactional
     public ResponseEntity uploadVideo(MultipartFile video, UploadReqDto uploadReqDto) {
+
+        // video null 유효성
+        if(video == null)
+            return new ResponseEntity(NoDataResponse.response(status.VIDEO_NULLPOINT_EXCEPTION
+                    , new ResponseMessage().VIDEO_NULLPOINT_EXCEPTION
+            ), HttpStatus.NOT_FOUND);
+
+
         // userId 유효성 검사
         Optional<Member> byId = memberRepository.findById(uploadReqDto.getUserId());
         if (!byId.isPresent())
