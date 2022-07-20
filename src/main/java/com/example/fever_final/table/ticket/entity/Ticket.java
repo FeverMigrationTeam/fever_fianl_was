@@ -22,7 +22,7 @@ public class Ticket extends Timestamped {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member_memeber_id")
     private Member member;
 
     @Column(name = "ticket_name")
