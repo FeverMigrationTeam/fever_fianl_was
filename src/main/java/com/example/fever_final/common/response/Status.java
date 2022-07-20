@@ -37,7 +37,7 @@ public class Status {
     *
     * */
 
-    public final int MEMBER_NO_VIDEOS = 4200;
+    public final int VIDEO_MEMBER_NO_VIDEOS = 4200;
     public final int VIDEO_INVALID_ID = 4201;
 
 
@@ -49,6 +49,12 @@ public class Status {
     public final int ALARM_INVALID_CONTENT_TYPE = 4302;
     public final int ALARM_INVALID_ALARM_ID = 4303;
 
+    /* 4400 ~ : pay 관련
+    *
+    * */
+    public final int PAY_INVALID_MEMEBER_ID = 4400;
+    public final int PAY_NO_DATA = 4401;
+    public final int PAY_ALREADY_EXISTED = 4402;
 
 
     // 유효성 검사

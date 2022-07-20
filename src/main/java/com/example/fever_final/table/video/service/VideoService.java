@@ -116,8 +116,8 @@ public class VideoService {
 
         // 비디오가 없는 유저
         if (allByMember.isEmpty())
-            return new ResponseEntity(NoDataResponse.response(status.MEMBER_NO_VIDEOS
-                    , new ResponseMessage().MEMBER_NO_VIDEOS
+            return new ResponseEntity(NoDataResponse.response(status.VIDEO_MEMBER_NO_VIDEOS
+                    , new ResponseMessage().VIDEO_MEMBER_NO_VIDEOS
             ), HttpStatus.NOT_FOUND);
 
 

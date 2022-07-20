@@ -6,10 +6,7 @@ import com.example.fever_final.table.alarm.dto.AlarmMakeReqDto;
 import com.example.fever_final.table.alarm.etc.AlarmType;
 import com.example.fever_final.table.member.dto.request.UserJoinDto;
 import com.example.fever_final.table.member.entity.Member;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.websocket.server.ServerEndpoint;
@@ -18,12 +15,13 @@ import javax.websocket.server.ServerEndpoint;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "alarm")
 public class Alarm extends Timestamped {
 
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -37,12 +35,13 @@ public class Alarm extends Timestamped {
 
     private int isRead;
 
-    public Alarm(Member member, String contents,AlarmType alarmType) {
-        if (member == null)
-            this.member = member;
-        this.contents = contents;
-        this.alarmType =alarmType;
-        this.isRead = 0; // 안읽음.
+    public static Alarm buildAlarm(Member member, String contents, AlarmType alarmType) {
+        return Alarm.builder()
+                .member(member)
+                .contents(contents)
+                .alarmType(alarmType)
+                .isRead(0)
+                .build();
     }
 
 
