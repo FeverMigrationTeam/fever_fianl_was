@@ -33,15 +33,22 @@ public class ResponseMessage {
 
 
     // Alarm 관련
-    public String ALARM_INVALID_MEMBER_ID = "해당 유저는 존재하지 않습니다.";
+    public String ALARM_INVALID_MEMBER_ID = "ALARM : 해당 유저는 존재하지 않습니다.";
     public String ALARM_NO_DATA = "해당 유저는 알람이 존재하지 않습니다.";
     public String ALARM_INVALID_CONTENT_TYPE = "해당 컨텐츠는 제공하지 않습니다.";
     public String ALARM_INVALID_ALARM_ID = "해당 알람 id는 유효하지 않습니다.";
 
     // pay 관련
-    public String PAY_INVALID_MEMEBER_ID = "해당 유저는 존재하지 않습니다.";
+    public String PAY_INVALID_MEMEBER_ID = "PAY : 해당 유저는 존재하지 않습니다.";
     public String PAY_NO_DATA = "clientId와 secretId를 등록해주세요.";
     public String PAY_ALREADY_EXISTED = "clientId, secreteId 수정되었습니다.";
+
+    // ticket 관련
+    public String TICKET_INVALID_TYPE = "해당 타입은 지원하지 않습니다. 0(30분) 1(1시간) 2(2시간)";
+    public String TICKET_INVALID_MEMEBER_ID = "TICKET : 해당 유저는 존재하지 않습니다.";
+    public String TICKET_INVALID_ID = "존재하지 않는 ticketId입니다.";
+    public String TICKET_INVALID_MEMBER_ID = "TICKET : 해당 유저는 존재하지 않습니다.";
+    public String TICKET_ALREADY_USED = "TICEKT : 이미 사용된 이용권입니다.";
 
 
 }

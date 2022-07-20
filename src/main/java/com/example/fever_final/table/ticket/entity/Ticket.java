@@ -13,6 +13,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "ticket")
 public class Ticket extends Timestamped {
 
@@ -41,8 +42,10 @@ public class Ticket extends Timestamped {
         this.member = member;
         if (!member.getTicketList().contains(this))
             member.setTicketList(this);
-
     }
+
+
+
 
 }
 
