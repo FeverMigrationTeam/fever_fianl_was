@@ -56,6 +56,15 @@ public class Status {
     public final int PAY_NO_DATA = 4401;
     public final int PAY_ALREADY_EXISTED = 4402;
 
+    /* 4500 ~ : ticket 관련
+     *
+     * */
+    public final int TICKET_INVALID_MEMEBER_ID = 4500;
+    public final int TICKET_INVALID_TYPE = 4501;
+    public final int TICKET_INVALID_ID = 4502;
+    public final int TICKET_INVALID_MEMBER_ID = 4503;
+    public final int TICKET_ALREADY_USED = 4504;
+
 
     // 유효성 검사
     public final int STADIUM_INVALID_NAME = 5001;
