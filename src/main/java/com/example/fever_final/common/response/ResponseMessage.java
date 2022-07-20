@@ -32,6 +32,12 @@ public class ResponseMessage {
     public String MEMBER_NO_VIDEOS = "해당 유저는 저장된 비디오가 없습니다.";
 
 
+    // Alarm 관련
+    public String ALARM_INVALID_MEMBER_ID = "해당 유저는 존재하지 않습니다.";
+    public String ALARM_NO_DATA = "해당 유저는 알람이 존재하지 않습니다.";
+    public String ALARM_INVALID_CONTENT_TYPE = "해당 컨텐츠는 제공하지 않습니다.";
+    public String ALARM_INVALID_ALARM_ID = "해당 알람 id는 유효하지 않습니다.";
+
 
 
 

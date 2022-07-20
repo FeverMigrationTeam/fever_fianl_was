@@ -22,8 +22,6 @@ public class Status {
     /* 4100 ~ : 유저관련 에러
     *
     * */
-
-
     // 로그인
     public final int LOGIN_INVALID_ID = 4100;
     public final int LOGIN_INVALID_PASSWORD = 4101;
@@ -43,14 +41,21 @@ public class Status {
     public final int VIDEO_INVALID_ID = 4201;
 
 
-    /**
-     * */
+    /* 4300 ~ : alarm 관련
+    *
+    * */
+    public final int ALARM_NO_DATA = 4300;
+    public final int ALARM_INVALID_MEMBER_ID = 4301;
+    public final int ALARM_INVALID_CONTENT_TYPE = 4302;
+    public final int ALARM_INVALID_ALARM_ID = 4303;
+
+
+
     // 유효성 검사
     public final int STADIUM_INVALID_NAME = 5001;
     public final int VIDEO_NULLPOINT_EXCEPTION = 5002;
     public final int REGALA_INVALID_ID = 5003;
     public final int REGALA_INVALID_STATUS = 5004;
-
 
 
 }
