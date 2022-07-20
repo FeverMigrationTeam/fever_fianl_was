@@ -29,7 +29,7 @@ public class ResponseMessage {
 
     // video 관련
     public String VIDEO_NULLPOINT_EXCEPTION = "비디오가 없습니다.비디오를 첨부해주세요.";
-    public String MEMBER_NO_VIDEOS = "해당 유저는 저장된 비디오가 없습니다.";
+    public String VIDEO_MEMBER_NO_VIDEOS = "해당 유저는 저장된 비디오가 없습니다.";
 
 
     // Alarm 관련
@@ -38,7 +38,10 @@ public class ResponseMessage {
     public String ALARM_INVALID_CONTENT_TYPE = "해당 컨텐츠는 제공하지 않습니다.";
     public String ALARM_INVALID_ALARM_ID = "해당 알람 id는 유효하지 않습니다.";
 
-
+    // pay 관련
+    public String PAY_INVALID_MEMEBER_ID = "해당 유저는 존재하지 않습니다.";
+    public String PAY_NO_DATA = "clientId와 secretId를 등록해주세요.";
+    public String PAY_ALREADY_EXISTED = "clientId, secreteId 수정되었습니다.";
 
 
 }

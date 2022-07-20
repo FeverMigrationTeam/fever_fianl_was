@@ -5,6 +5,7 @@ import com.example.fever_final.table.member.dto.request.UserJoinDto;
 import com.example.fever_final.table.member.etc.MemberStatus;
 import com.example.fever_final.common.type.SocialType;
 import com.example.fever_final.common.Timestamped;
+import com.example.fever_final.table.payments.entity.PayInfo;
 import com.example.fever_final.table.ticket.entity.Ticket;
 import com.example.fever_final.table.video.entity.Video;
 import lombok.*;
@@ -50,6 +51,8 @@ public class Member extends Timestamped implements UserDetails {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
     private List<Video> videoList = new ArrayList<>();
 
+    @OneToOne(fetch = FetchType.LAZY)
+    private PayInfo payInfo;
 
 //    @OneToMany(mappedBy = "member")
 //    private List<Video> videoList = new ArrayList<Video>();

@@ -88,7 +88,7 @@ public class AlarmService {
         String resultContents;
         AlarmType alarmType;
 
-        if (contents.equals("결제")) {
+        if (contents.equals("결제완료")) {
             resultContents = "결제가 완료되었습니다.";
             alarmType = AlarmType.PAYMENT;
         } else if (contents.equals("촬영완료")) {
@@ -106,7 +106,8 @@ public class AlarmService {
 
 
         // 알람 생성
-        Alarm alarm = new Alarm(byId.get(), resultContents, alarmType);
+        Alarm alarm = Alarm.buildAlarm(byId.get(), resultContents, alarmType);
+
         alarmRepository.save(alarm);
 
         AlarmMakeRespDto alarmMakeRespDto
@@ -134,8 +135,12 @@ public class AlarmService {
         Alarm alarm = byId.get();
 
         // isRead : 1 으로 읽음 처리
-        if (alarm.getIsRead() == 0)
+        if (alarm.getIsRead() == 0) {
             alarm.setIsRead(1);
+        } else
+            return new ResponseEntity(NoDataResponse.response(
+                    status.SUCCESS, "알람 읽음 처리 " + new ResponseMessage().SUCCESS
+            ), HttpStatus.OK);
 
         alarmRepository.save(alarm);
 

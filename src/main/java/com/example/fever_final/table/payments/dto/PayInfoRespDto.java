@@ -1,4 +1,4 @@
-package com.example.fever_final.table.alarm.dto;
+package com.example.fever_final.table.payments.dto;
 
 
 import lombok.AllArgsConstructor;
@@ -10,9 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AlarmMakeRespDto {
-
-    private Long id;
-    private String contents;
-    private String createdAt;
+public class PayInfoRespDto {
+    private String clientId;
+    private String secretId;
 }
