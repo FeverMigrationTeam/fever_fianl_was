@@ -23,7 +23,7 @@ spring:
       on-profile: "devdb"
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://fever-final.cy76xlw8fwhe.ap-northeast-2.rds.amazonaws.com:3306/fever?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    url: jdbc:mysql://fever-final-testdb.cy76xlw8fwhe.ap-northeast-2.rds.amazonaws.com:3306/fever?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
     username: fever
     password: fever2022
 

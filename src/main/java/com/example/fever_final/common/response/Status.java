@@ -64,13 +64,16 @@ public class Status {
     public final int TICKET_INVALID_ID = 4502;
     public final int TICKET_INVALID_MEMBER_ID = 4503;
     public final int TICKET_ALREADY_USED = 4504;
-
+    public final int TICKET_REGALA_INVALID_ID = 4505;
+    public final int TICEKT_REGALA_ALREADY_INUSE = 4506;
+    public final int TICKET_REGALA_INVALID_TICKET_TYPE = 4507;
 
     // 유효성 검사
     public final int STADIUM_INVALID_NAME = 5001;
     public final int VIDEO_NULLPOINT_EXCEPTION = 5002;
     public final int REGALA_INVALID_ID = 5003;
     public final int REGALA_INVALID_STATUS = 5004;
+
 
 
 }

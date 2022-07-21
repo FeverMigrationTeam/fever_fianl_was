@@ -2,6 +2,7 @@ package com.example.fever_final.table.payments.controller;
 
 
 import com.example.fever_final.table.payments.dto.AddPayInfoReqDto;
+import com.example.fever_final.table.payments.dto.UseTicketReqDto;
 import com.example.fever_final.table.payments.service.PayService;
 import com.example.fever_final.table.ticket.dto.TicketAddReqDto;
 import lombok.AllArgsConstructor;
@@ -24,9 +25,9 @@ public class PayController {
     }
 
     /* P2 : 이용권 사용 */
-    @PatchMapping("/ticket/{ticketId}")
-    public ResponseEntity useTicket( @PathVariable Long ticketId ) {
-        return payService.useTicket(ticketId);
+    @PatchMapping("/ticket")
+    public ResponseEntity useTicket(@RequestBody UseTicketReqDto useTicketReqDto) {
+        return payService.useTicket(useTicketReqDto);
     }
 
 
