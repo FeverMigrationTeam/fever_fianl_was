@@ -49,6 +49,9 @@ public class ResponseMessage {
     public String TICKET_INVALID_ID = "존재하지 않는 ticketId입니다.";
     public String TICKET_INVALID_MEMBER_ID = "TICKET : 해당 유저는 존재하지 않습니다.";
     public String TICKET_ALREADY_USED = "TICEKT : 이미 사용된 이용권입니다.";
+    public String TICKET_REGALA_INVALID_ID =  "TICKET : 존재하지 않는 regalaId입니다.";
+    public String TICEKT_REGALA_ALREADY_INUSE = "TICEKT : 해당 regala는 현재 사용불가입니다.";
+    public String TICKET_REGALA_INVALID_TICKET_TYPE = "TICEKT->REGALA : ticketType이 존재하지 않습니다.";
 
 
 }

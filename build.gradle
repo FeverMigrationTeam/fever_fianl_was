@@ -45,6 +45,9 @@ dependencies {
 
     // ModelMapper
     implementation('org.modelmapper:modelmapper:3.1.0')
+
+    // Json
+    implementation group: 'org.json', name: 'json', version: '20090211'
 }
 
 tasks.named('test') {
