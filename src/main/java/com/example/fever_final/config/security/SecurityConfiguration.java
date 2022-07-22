@@ -67,6 +67,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Request Header에 accesstoken 실어서 보내는 특별한 상황 허용 : Pre~~
                 .antMatchers(HttpMethod.POST, "/sign-up").permitAll() // 로그인 혹은 회원가입에 사용되는 api 들은 허용 ( 해당 단계에서는 토큰을 발급 받을 수 없음 )
                 .antMatchers(HttpMethod.POST, "/sign-in").permitAll()
+                .antMatchers(HttpMethod.GET, "/reaccess").permitAll()
+
 //                .antMatchers(HttpMethod.POST,"/test/**").permitAll()
 //                .antMatchers(HttpMethod.POST,"/**").permitAll()
 //                .antMatchers(HttpMethod.PUT,"/**").permitAll()

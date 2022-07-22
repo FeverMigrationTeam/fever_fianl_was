@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: jonghyun
+    active: dev
     include:
       - aws
       - credentials
@@ -36,8 +36,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/fever?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
-    username: root
-    password: gm040404@
+    username:
+    password:
 
 ---
 
@@ -75,7 +75,7 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto:  update #create
+      ddl-auto:  update # 운영서버시 validate 또는 none
       use-new-id-generator-mappings: true
     show-sql: true
     properties:
