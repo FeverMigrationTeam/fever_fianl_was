@@ -103,6 +103,8 @@ public class MemberService {
                 user.setRefreshToken(tmpRefreshToken);
                 customUserDetailService.save(user);
 
+                memberRepository.save(user);
+
                 return new ResponseEntity(DataResponse.response(status.SUCCESS, message.SUCCESS + " : 로그인",signResultRepDto), HttpStatus.OK);
 
             } else {
@@ -132,7 +134,9 @@ public class MemberService {
                 tokens.put("refreshtoken", userRefreshToken);
                 user.setRefreshToken(userRefreshToken); // refreshToken 업데이트
 
+                memberRepository.save(user);
                 customUserDetailService.save(user); // 새롭게 refreshToken 업데이트 된 User DB에 업데이트
+
                 return new ResponseEntity(DataResponse.response(status.SUCCESS,
                         "access token 재발급 " + message.SUCCESS, tokens), HttpStatus.OK);
 

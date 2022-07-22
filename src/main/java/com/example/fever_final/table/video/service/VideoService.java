@@ -12,7 +12,8 @@ import com.example.fever_final.table.regala.etc.RegalaStatus;
 import com.example.fever_final.table.regala.repository.RegalaRepository;
 import com.example.fever_final.table.stadium.entity.Stadium;
 import com.example.fever_final.table.stadium.repository.StadiumRepository;
-import com.example.fever_final.table.video.dto.MultipartDto;
+import com.example.fever_final.table.video.dto.request.MultipartDto;
+import com.example.fever_final.table.video.dto.request.VideoInfoReqDto;
 import com.example.fever_final.table.video.dto.response.VideoListRespDto;
 import com.example.fever_final.table.video.entity.Video;
 import com.example.fever_final.table.video.repository.VideoRepository;
@@ -22,7 +23,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -40,9 +40,9 @@ public class VideoService {
     private final S3Service s3Service;
     private final RegalaRepository regalaRepository;
 
-    /* 비디오 업로드 */
+    /* V1 : 비디오 업로드 */
     @Transactional
-    public ResponseEntity uploadVideo(MultipartDto dto) {
+    public ResponseEntity uploadVideoWithDto(MultipartDto dto) {
         MultipartFile video = dto.getVideo();
 
         // video null 유효성
@@ -126,7 +126,7 @@ public class VideoService {
         for (Video video : allByMember) {
             String stadiumName = video.getStadium().getStadiumName();
             VideoListRespDto videoListRespDto = new VideoListRespDto(video.getId()
-                    , video.getCreatedAt().toString().substring(0,10)
+                    , video.getCreatedAt().toString().substring(0, 10)
                     , video.getVideoUrl()
                     , stadiumName);
             listRepDtoList.add(videoListRespDto);
@@ -137,8 +137,9 @@ public class VideoService {
         ), HttpStatus.OK);
 
     }
+
     /* V3 : s3에서 영상 URl 내려주기 */
-    public ResponseEntity getVideo( Long videoId){
+    public ResponseEntity getVideo(Long videoId) {
         //비디오 id 유효성 검사
         Optional<Video> byId = videoRepository.findById(videoId);
         if (!byId.isPresent())
@@ -153,6 +154,77 @@ public class VideoService {
                 status.SUCCESS, "s3에서 영상 url 내려주기 " + new ResponseMessage().SUCCESS, videoUrl
         ), HttpStatus.OK);
 
+
+    }
+
+
+    /* V4 : s3 영상 업로드 : s3 비디오 단독 업로드 */
+    public ResponseEntity uploadVideo(MultipartFile video) {
+
+
+
+        // video null 유효성
+        if (video == null)
+            return new ResponseEntity(NoDataResponse.response(status.VIDEO_NULLPOINT_EXCEPTION
+                    , new ResponseMessage().VIDEO_NULLPOINT_EXCEPTION
+            ), HttpStatus.NOT_FOUND);
+
+        String videoUrl = s3Service.uploadS3(video);
+
+        return new ResponseEntity(DataResponse.response(
+                status.SUCCESS, " 비디오 업로드 : s3 비디오 단독 업로드 " + new ResponseMessage().SUCCESS, videoUrl
+        ), HttpStatus.OK);
+
+    }
+
+
+    /* V5 : s3 영상 url, 정보 db저장 */
+    public ResponseEntity uploadVideoWithInfo( VideoInfoReqDto dto) {
+
+
+        // userId 유효성 검사
+        Optional<Member> byId = memberRepository.findById(dto.getUserId());
+        if (!byId.isPresent())
+            return new ResponseEntity(NoDataResponse.response(status.MEMBER_INVALID_ID
+                    , new ResponseMessage().MEMBER_INVALID_ID
+            ), HttpStatus.NOT_FOUND);
+
+        // 유저 생성
+        Member member = byId.get();
+
+        // stadium 유효성 검사
+        Optional<Stadium> byStadiumName = stadiumRepository.findByStadiumName(dto.getStadiumName());
+        if (!byStadiumName.isPresent())
+            return new ResponseEntity(NoDataResponse.response(status.STADIUM_INVALID_NAME
+                    , new ResponseMessage().STADIUM_INVALID_NAME
+            ), HttpStatus.NOT_FOUND);
+
+        Stadium stadium = byStadiumName.get();
+        String videoUrl = dto.getUrl();
+
+        //regala 유효성 검사
+        Optional<Regala> byId1 = regalaRepository.findById(dto.getRegalaId());
+        if (!byId1.isPresent())
+            return new ResponseEntity(NoDataResponse.response(status.REGALA_INVALID_ID
+                    , new ResponseMessage().REGALA_INVALID_ID
+            ), HttpStatus.NOT_FOUND);
+
+        Regala regala = byId1.get();
+
+        // Video 빌드
+        Video video1 = Video.buildUpload(videoUrl, member, stadium, regala);
+        // db에 저장
+        videoRepository.save(video1);
+
+        // 리갈라 상태 값 변경 : 사용가능
+        if (regala.getRegalaStatus().equals(RegalaStatus.INUSE))
+            regala.setRegalaStatus(RegalaStatus.AVAILABLE);
+
+
+
+        return new ResponseEntity(DataResponse.response(
+                status.SUCCESS, " 비디오 url db저장 " + new ResponseMessage().SUCCESS, videoUrl
+        ), HttpStatus.OK);
 
     }
 }
